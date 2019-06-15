@@ -12,12 +12,16 @@ $button.addEventListener("click", function() {
     fetch('http://localhost:8080/api/v1/auth/login', 
         {
             method: 'POST',
-            headers: myHeaders,
-            body: login,
-            mode: 'cors'
+            headers:  {
+                'Access-Control-Allow-Origin':'*',
+                 'Content-Type': 'application/json',
+                 'Cache-Control': 'no-cache',
+               },
+            body:JSON.stringify(login),
+            mode: "cors"
         }
     ).then( r => {
-        console.log(r);
+        console.log(r.json().then(data => console.log(data.token)));
     });
 
 });
