@@ -18,8 +18,9 @@ async function requestPOST(url, body) {
         }
         return r;
     } catch (error) {
+        if (!error) throw ErrorEvent("Servidor não disponível");
         let e = await error.json();
-        console.log(e.message);
+        alert(e.message);
     }
 }
 
@@ -27,32 +28,26 @@ async function requestPOST(url, body) {
 async function authToken (login) {
 
     try {
-        let r = await fetch('http://localhost:8080/api/v1/auth/login', 
-        {
-            method: 'POST',
-            headers:  {
-                'Access-Control-Allow-Origin':'*',
-                'Content-Type': 'application/json',
-                'Cache-Control': 'no-cache',
-            },
-            body:JSON.stringify(login),
-            mode: "cors"
-        });
-        if (!r.ok) {
-            throw r;
+        let response = await requestPOST('http://ucdb-final.herokuapp.com/api/v1/auth/login', login);
+        if (!response.ok) {
+            throw response;
         }
-        let data = await r.json();
-        token = data.token;
+        let data = await response.json();
+        return {
+            "email": login.email,
+            "token": data.token
+        };
     } catch (error) {
+        if (!error) throw ErrorEvent("Servidor não disponível");
         let e = await error.json();
-        console.log(e.message);
+        alert(e.message);
     }
    
 }
 
 async function cadastrarUsuario(user) {
 
-    let response = await requestPOST("http://localhost:8080/api/v1/users/", user);
+    let response = await requestPOST("http://ucdb-final.herokuapp.com/api/v1/users/", user);
 
     if (!response) {
         throw new ErrorEvent("Request null");
@@ -60,9 +55,7 @@ async function cadastrarUsuario(user) {
     
     let data = await response.json();
     
-    console.log("Cadastro realizado!");
-    console.log(data);
-
+    alert("Cadastro realizado!");
 }
 
 export {authToken, token, cadastrarUsuario};

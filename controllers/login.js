@@ -1,4 +1,4 @@
-import {authToken, token} from '../model/modelUsers.js';
+import {authToken} from '../model/modelUsers.js';
 
 let $button = document.getElementById("submit");
 
@@ -9,13 +9,18 @@ $button.addEventListener("click", function() {
         "password": document.getElementById("password").value
     }
 
-    mostrarLogin(login);
+    logar(login);
 
 });
 
-async function mostrarLogin(login) {
-    await authToken(login);
-    console.log(token);
+async function logar(login) {
+    let data = await authToken(login);
+   
+    if (data) {
+        sessionStorage.setItem('email', data.email);
+        sessionStorage.setItem('token', data.token);
+        setInterval(() => {window.location.assign("/home.html");}, 1000);
+    }
 };
 
 
