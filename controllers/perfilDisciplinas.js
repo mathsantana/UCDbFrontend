@@ -3,6 +3,7 @@ import {getPerfilDisciplina, giveLike, giveComment} from "../model/modelPerfilDi
 let $ulComments = document.getElementById("listComments");
 let $bttnLike = document.getElementById("bttnLike");
 let $bttnComment = document.getElementById("bttnComment");
+let $nLikes = document.getElementById("nLikes");
 let urlParams = new URLSearchParams(window.location.search);
 let id = urlParams.get('id');
 
@@ -22,7 +23,7 @@ async function renderPage() {
 
         document.getElementById("id").innerText = `${perfilDisciplina.id} - ${perfilDisciplina.disciplina.nome}`;
         
-        document.getElementById("nLikes").innerText = `${perfilDisciplina.likes}`;
+        $nLikes.innerText = `${perfilDisciplina.likes}`;
 
         console.log(perfilDisciplina.usuarioCurtiu);
 
@@ -60,6 +61,7 @@ async function sendComment() {
 }
 
 function renderLike(perfilDisciplina) {
+    $nLikes.innerHTML = perfilDisciplina.likes;
     if (perfilDisciplina.usuarioCurtiu){
         $bttnLike.innerText = "Liked";
         $bttnLike.style = "background-color: green";
@@ -72,7 +74,7 @@ function renderLike(perfilDisciplina) {
 function createComment(comment) {
     let $li = document.createElement("LI");
     let $p1 = document.createElement("P");
-    $p1.innerHTML = `${comment.user}`;
+    $p1.innerHTML = `${comment.user.firstName} ${comment.user.lastName}`;
     let $p2 = document.createElement("P");
     $p2.innerHTML = `${comment.text}`;
     let $p3 = document.createElement("P");

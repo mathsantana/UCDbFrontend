@@ -1,6 +1,6 @@
 async function getAllPerfilDisciplina(token) {
     try {
-        let r = await fetch("http://ucdb-final.herokuapp.com/api/v1/perfil/", 
+        let r = await fetch("http://ucdb-final.herokuapp.com/api/v1/perfil/likes/", 
         {
             method: 'GET',
             headers:  {
