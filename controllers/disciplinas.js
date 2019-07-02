@@ -1,6 +1,7 @@
 import {getDisciplinas} from "../model/modelDisciplinas.js"
 import "../components/navbar.js";
 import "../components/disciplinas.js";
+
 renderDisciplinas();
 
 

@@ -65,13 +65,15 @@ async function renderComments(firstTime = false, perfilDisciplina) {
         sessionStorage.getItem("token"));
 
         let listComments = perfilDisciplina.comments;
+        listComments.sort(compareIdComment);
         listComments.forEach(comment => {
             if (!comment.comentarioApagado) {
                 createComment(comment, $mural);
                 if (comment.reply.length != 0) {
                     let $ul = document.createElement("UL");
+                    let listReply = comment.reply.sort(comparePerfil);
                     let reply;
-                    for (reply of comment.reply) {
+                    for (reply of listReply) {
                         if(!reply.comentarioApagado){
                             const $r = createReply(reply);
                             $ul.appendChild($r);
@@ -117,6 +119,25 @@ function createReply(reply) {
     $r.setAttribute('idComment', reply.parent);
     $r.setAttribute('idReply', reply.comments_id);
     return $r;
+}
+
+function compareIdComment(a, b) {
+    let c = a.id;
+    let d = b.id;
+
+    if(c > d) return -1;
+    else if (c < d) return 1;
+    else return 0;
+
+}
+
+function comparePerfil(a, b) {
+    let c = Date.parse(a.date);
+    let d = Date.parse(b.date);
+
+    if(c > d) return -1;
+    else if (c < d) return 1;
+    else return 0;
 }
 
 export {renderComments};

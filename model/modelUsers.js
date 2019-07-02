@@ -1,5 +1,3 @@
-let token;
-
 async function requestPOST(url, body) {
     try {
         let r = await fetch(url, 
@@ -58,4 +56,4 @@ async function cadastrarUsuario(user) {
     alert("Cadastro realizado!");
 }
 
-export {authToken, token, cadastrarUsuario};
+export {authToken, cadastrarUsuario};

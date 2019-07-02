@@ -69,7 +69,8 @@ class Comment extends HTMLElement{
         });
         $remove.addEventListener("click", () => {
             if (sessionStorage.getItem("email") == this.email) {
-                removeComment(this.idComment, this.idPerfil, this.email);
+                removeComment(this.idComment, this.idPerfil, this.email)
+                .then(() => renderComments());
             } else {
                 alert("Você não pode deletar esse comentário. Ele não é seu!")
             }
