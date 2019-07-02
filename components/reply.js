@@ -1,3 +1,6 @@
+import {removeReply} from "../model/modelPerfilDisciplinas.js";
+import {renderComments} from "../controllers/perfilDisciplinas.js";
+
 class Reply extends HTMLElement{
     constructor() {
         super();
@@ -7,7 +10,11 @@ class Reply extends HTMLElement{
     connectedCallback() {
         this.text = this.getAttribute('text');
         this.user = this.getAttribute('user');
+        this.email = this.getAttribute('email');
         this.date = this.getAttribute('date');
+        this.idPerfil = this.getAttribute('idperfil');
+        this.idComment = this.getAttribute('idcomment');
+        this.idReply = this.getAttribute('idreply');
         this.render();
     }
 
@@ -16,9 +23,22 @@ class Reply extends HTMLElement{
             `<link rel="stylesheet" href="">
             <p class="user">${this.user}</p>
              <p class="text">${this.text}</p>
-             <date class="date">${this.date}</time>`;
+             <p class="date">${this.date}</p>
+             <button id="remove">Remover</button>`;
+        let $remove = this.$shadow.getElementById("remove");
+        $remove.addEventListener("click", () => {
+            if (sessionStorage.getItem("email") == this.email) {
+                removeReply(this.idComment, this.idReply, this.idPerfil, this.email)
+                .then(() => { renderComments(); });
+            } else {
+                alert("Você não pode deletar essa resposta. Ela não te pertence!")
+            }
+        })
 
     }
 }
+
+//  button.link { background:none;border:none; } css button
+
 
 window.customElements.define('reply-ps', Reply)

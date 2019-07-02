@@ -72,8 +72,10 @@ async function renderComments(firstTime = false, perfilDisciplina) {
                     let $ul = document.createElement("UL");
                     let reply;
                     for (reply of comment.reply) {
-                        const $r = createReply(reply);
-                        $ul.appendChild($r);  
+                        if(!reply.comentarioApagado){
+                            const $r = createReply(reply);
+                            $ul.appendChild($r);
+                        }  
                     }
                     $mural.appendChild($ul);
                 }
@@ -105,10 +107,15 @@ function createComment(comment) {
 }
 
 function createReply(reply) {
+    console.log(reply);
     let $r = document.createElement("reply-ps");
     $r.setAttribute('user', reply.user);
     $r.setAttribute('text', reply.text);
     $r.setAttribute('date', reply.date);
+    $r.setAttribute('idPerfil', id);
+    $r.setAttribute('email', reply.user);
+    $r.setAttribute('idComment', reply.parent);
+    $r.setAttribute('idReply', reply.comments_id);
     return $r;
 }
 

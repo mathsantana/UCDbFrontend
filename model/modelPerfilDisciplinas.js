@@ -156,4 +156,30 @@ async function removeComment(idComment, idPerfil, email) {
     }
 }
 
-export {getAllPerfilDisciplina, getPerfilDisciplina, giveLike, giveComment, giveReply, removeComment};
+async function removeReply(idComment, idReply, idPerfil, email) {
+    try {
+        let r = await fetch(`http://ucdb-final.herokuapp.com/api/v1/perfil/removecommentreply/${idComment}/${idReply}/${idPerfil}/${email}`, 
+        {
+            method: 'PUT',
+            headers:  {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache',
+                'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+            },
+            mode: "cors"
+        });
+
+        if (!r.ok) {
+            throw r;
+        }
+    } catch(error) {
+        let e = await error.json();
+        alert(e.message);
+    }
+}
+
+
+
+export {getAllPerfilDisciplina, getPerfilDisciplina, giveLike, 
+    giveComment, giveReply, removeComment, removeReply};
