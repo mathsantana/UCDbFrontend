@@ -1,5 +1,6 @@
 import {getDisciplinas} from "../model/modelDisciplinas.js"
-
+import "../components/navbar.js";
+import "../components/disciplinas.js";
 renderDisciplinas();
 
 
@@ -9,13 +10,13 @@ async function renderDisciplinas() {
 
     console.log(data);
 
-    let canvas = document.getElementById('disciplinas');
+    let $canvas = document.getElementById('disciplinas');
 
     for (disciplina of data) {
-        let listNode = document.createElement("LI");
-        let content = document.createTextNode(`${disciplina.id} - ${disciplina.nome}`);
+        let $d = document.createElement("disciplina-ps");
+        $d.setAttribute("name", disciplina.nome);
+        $d.setAttribute("id", disciplina.id);
 
-        listNode.appendChild(content);
-        canvas.appendChild(listNode);
+        $canvas.appendChild($d);
     }
 }

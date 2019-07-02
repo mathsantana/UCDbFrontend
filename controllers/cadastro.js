@@ -1,4 +1,5 @@
 import {cadastrarUsuario} from "../model/modelUsers.js";
+import "../components/navbar.js"
 
 let $buttonCadastrar = document.getElementById("submitCadastro");
 

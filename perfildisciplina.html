@@ -7,17 +7,20 @@
     <title>Perfil de Disciplina</title>
 </head>
 <body>
+    <nav-bar login></nav-bar>
+
     <h1 id="id"></h1>
     <section id="likes">
         <p>Likes: <span id="nLikes"></span></p>
         <button id="bttnLike"></button>
     </section>
     <h2>Comentários</h2>
-    <section class="comments">
-        <ul id="listComments"></ul>
-    </section>
     <input type="textbox" id="inputComment" placeholder="Deixe seu comentário aqui"/>
     <button id="bttnComment" type="submit">Comentar</button>
+    <section class="comments" id="board">
+        <ul id="listComments"></ul>
+    </section>
+    
     
     <script type="module" src="../controllers/perfilDisciplinas.js"></script>
 </body>

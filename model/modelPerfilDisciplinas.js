@@ -107,4 +107,53 @@ async function giveComment(id, user, token, text) {
     }
 }
 
-export {getAllPerfilDisciplina, getPerfilDisciplina, giveLike, giveComment};
+async function giveReply(id, email, text, token) {
+    try {
+        let r = await fetch(`http://ucdb-final.herokuapp.com/api/v1/perfil/comentar/reply/${id}/${email}`, 
+        {
+            method: 'POST',
+            headers:  {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({"text": text}),
+            mode: "cors"
+        });
+        if (!r.ok) {
+            throw r;
+        }
+        let newReply = await r.json();
+        return newReply;
+    } catch(error) {
+        console.log(error||"Error null")
+        let e = await error.json();
+        alert(e.message);
+    }
+}
+
+async function removeComment(idComment, idPerfil, email) {
+    try {
+        let r = await fetch(`http://ucdb-final.herokuapp.com/api/v1/perfil/removecomment/${idComment}/${idPerfil}/${email}`, 
+        {
+            method: 'PUT',
+            headers:  {
+                'Access-Control-Allow-Origin':'*',
+                'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache',
+                'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+            },
+            mode: "cors"
+        });
+
+        if (!r.ok) {
+            throw r;
+        }
+    } catch(error) {
+        let e = await error.json();
+        alert(e.message);
+    }
+}
+
+export {getAllPerfilDisciplina, getPerfilDisciplina, giveLike, giveComment, giveReply, removeComment};

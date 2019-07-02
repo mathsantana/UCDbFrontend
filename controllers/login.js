@@ -1,4 +1,5 @@
 import {authToken} from '../model/modelUsers.js';
+import "../components/navbar.js"
 
 let $button = document.getElementById("submit");
 

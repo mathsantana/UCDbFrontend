@@ -1,6 +1,9 @@
 import {getPerfilDisciplina, giveLike, giveComment} from "../model/modelPerfilDisciplinas.js";
+import "../components/navbar.js";
+import "../components/comment.js";
+import "../components/reply.js";
 
-let $ulComments = document.getElementById("listComments");
+let $mural = document.getElementById("listComments");
 let $bttnLike = document.getElementById("bttnLike");
 let $bttnComment = document.getElementById("bttnComment");
 let $nLikes = document.getElementById("nLikes");
@@ -15,7 +18,6 @@ $bttnComment.addEventListener("click", () => { sendComment();});
 async function renderPage() {
     console.log(id);
     if (id) {
-        console.log("Oi");
         let perfilDisciplina = await getPerfilDisciplina(id, sessionStorage.getItem("email"),
         sessionStorage.getItem("token"));
 
@@ -29,10 +31,7 @@ async function renderPage() {
 
         renderLike(perfilDisciplina);
 
-        let listComments = perfilDisciplina.comments;
-        listComments.forEach(comment => {
-            createComment(comment);
-        });
+        renderComments(true, perfilDisciplina)
 
     }
     else {
@@ -56,8 +55,30 @@ async function sendComment() {
         let textJson = { "text": text };
         let newComment = await giveComment(id, sessionStorage.getItem("email"), sessionStorage.getItem("token"),
         textJson);
-        createComment(newComment);
+        renderComments();
     }
+}
+
+async function renderComments(firstTime = false, perfilDisciplina) {
+        $mural.innerHTML = "";
+        if (!firstTime) perfilDisciplina = await getPerfilDisciplina(id, sessionStorage.getItem("email"),
+        sessionStorage.getItem("token"));
+
+        let listComments = perfilDisciplina.comments;
+        listComments.forEach(comment => {
+            if (!comment.comentarioApagado) {
+                createComment(comment, $mural);
+                if (comment.reply.length != 0) {
+                    let $ul = document.createElement("UL");
+                    let reply;
+                    for (reply of comment.reply) {
+                        const $r = createReply(reply);
+                        $ul.appendChild($r);  
+                    }
+                    $mural.appendChild($ul);
+                }
+            }
+        });
 }
 
 function renderLike(perfilDisciplina) {
@@ -72,15 +93,23 @@ function renderLike(perfilDisciplina) {
 }
 
 function createComment(comment) {
-    let $li = document.createElement("LI");
-    let $p1 = document.createElement("P");
-    $p1.innerHTML = `${comment.user.firstName} ${comment.user.lastName}`;
-    let $p2 = document.createElement("P");
-    $p2.innerHTML = `${comment.text}`;
-    let $p3 = document.createElement("P");
-    $p3.innerHTML = `${comment.date}`;
-    $li.appendChild($p1);
-    $li.appendChild($p2);
-    $li.appendChild($p3);
-    $ulComments.appendChild($li);
+    console.log(comment);
+    let $c = document.createElement("comment-ps");
+    $c.setAttribute('user', `${comment.user.firstName} ${comment.user.lastName}`);
+    $c.setAttribute('text', comment.text);
+    $c.setAttribute('date', comment.date);
+    $c.setAttribute('idcomment', comment.id);
+    $c.setAttribute('idperfil', id);
+    $c.setAttribute('email', comment.user.email);
+    $mural.appendChild($c);
 }
+
+function createReply(reply) {
+    let $r = document.createElement("reply-ps");
+    $r.setAttribute('user', reply.user);
+    $r.setAttribute('text', reply.text);
+    $r.setAttribute('date', reply.date);
+    return $r;
+}
+
+export {renderComments};
