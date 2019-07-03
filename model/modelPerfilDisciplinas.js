@@ -1,4 +1,4 @@
-async function getAllPerfilDisciplina(token) {
+async function getAllPerfilDisciplina() {
     try {
         let r = await fetch("http://ucdb-final.herokuapp.com/api/v1/perfil/likes/", 
         {
@@ -7,7 +7,7 @@ async function getAllPerfilDisciplina(token) {
                 'Access-Control-Allow-Origin':'*',
                 'Content-Type': 'application/json',
                 'Cache-Control': 'no-cache',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${sessionStorage.getItem("token")}`
             },
             mode: "cors"
         });
@@ -28,7 +28,7 @@ async function getAllPerfilDisciplina(token) {
     }
 }
 
-async function getPerfilDisciplina(id, user, token) {
+async function getPerfilDisciplina(id, user) {
     try {
         let r = await fetch(`http://ucdb-final.herokuapp.com/api/v1/perfil/codigo/${id}/${user}`, 
         {
@@ -37,7 +37,7 @@ async function getPerfilDisciplina(id, user, token) {
                 'Access-Control-Allow-Origin':'*',
                 'Content-Type': 'application/json',
                 'Cache-Control': 'no-cache',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${sessionStorage.getItem("token")}`
             },
             mode: "cors"
         });

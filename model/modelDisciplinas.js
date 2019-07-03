@@ -1,7 +1,8 @@
 
 async function getDisciplinas(substring = false) {
-    if (!substring) const url = "http://ucdb-final.herokuapp.com/api/v1/disciplinas/";
-    else const url = `http://ucdb-final.herokuapp.com/api/v1/disciplinas/${substring}`;
+    let url;
+    if (!substring) url = "http://ucdb-final.herokuapp.com/api/v1/disciplinas/";
+    else url = `http://ucdb-final.herokuapp.com/api/v1/disciplinas/${substring}`;
     try {
         let response = await fetch(url,
             {

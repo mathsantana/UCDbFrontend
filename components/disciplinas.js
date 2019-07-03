@@ -27,17 +27,18 @@ class Disciplina extends HTMLElement{
 
     renderLogged() {
         this.$shadow.innerHTML = 
-            `<a href="/perfildisciplina.html?id=${this.id}">
-                <div>
+            `<link rel="stylesheet" href="./styles/disciplina.css">
+            <a href="/perfildisciplina.html?id=${this.id}">
+                <div class="box">
                     <span>${this.id} - ${this.name}</span>
-                    <p>Likes:${this.likes}</p>
                 </div>
             </a>`;
     }
 
     renderGuest() {
         this.$shadow.innerHTML = 
-            `<div>
+            `<link rel="stylesheet" href="./styles/disciplina.css">
+            <div class="box">
                 <span>${this.id} - ${this.name}</span>
             </div>`;
     }

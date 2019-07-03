@@ -24,9 +24,12 @@ class NavBar extends HTMLElement{
 
     renderLogged() {
         this.$shadow.innerHTML = 
-            `<nav>
-            <a href="/home.html">UCDB</a>
-            <a id="sair" href="index.html">Sair</a>
+            `<link rel="stylesheet" href="./styles/navbar.css">
+            <nav>
+            <ul>
+            <li><a class="main" href="/home.html">UCDB</a></li>
+            <li><a class="second" id="sair" href="index.html">Sair</a></li>
+            </ul>
             </nav>`;
 
         let $sair = this.$shadow.getElementById("sair");
@@ -38,10 +41,13 @@ class NavBar extends HTMLElement{
 
     renderGuest() {
         this.$shadow.innerHTML = 
-            `<nav>
-            <a href="index.html">UCDb</a>
-            <a href="login.html">Login</a>
-            <a href="cadastro.html">Cadastro</a>
+            `<link rel="stylesheet" href="./styles/navbar.css">
+            <nav>
+            <ul>
+            <li><a class="main" href="index.html">UCDb</a></li>
+            <li><a class="second" href="cadastro.html">Cadastro</a></li>
+            <li><a class="second" href="login.html">Login</a></li>
+            </ul>
             </nav>`;
     }
 }

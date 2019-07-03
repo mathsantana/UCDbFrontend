@@ -61,8 +61,7 @@ async function sendComment() {
 
 async function renderComments(firstTime = false, perfilDisciplina) {
         $mural.innerHTML = "";
-        if (!firstTime) perfilDisciplina = await getPerfilDisciplina(id, sessionStorage.getItem("email"),
-        sessionStorage.getItem("token"));
+        if (!firstTime) perfilDisciplina = await getPerfilDisciplina(id, sessionStorage.getItem("email"));
 
         let listComments = perfilDisciplina.comments;
         listComments.sort(compareIdComment);

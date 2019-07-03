@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="./styles/login.css">
 </head>
 <body>
     <nav-bar></nav-bar>
 
-    <h1>Cadastro</h1>
+    <main>
+        <h1>Cadastro</h1>
 
-    <label>Primeiro Nome: <input type="text" id="fName"></label><br>
-    <label>Último Nome: <input type="text" id="lName"></label><br>
-    <label>Email: <input id="email" type="text"/></label><br>
-    <label>Senha: <input id="password" type="password"></label><br>
-    <button type="submit" id="submitCadastro">Cadastro</button>
+        <label>Primeiro Nome <input type="text" id="fName"></label>
+        <label>Último Nome <input type="text" id="lName"></label>
+        <label>Email <input id="email" type="text"/></label>
+        <label>Senha <input id="password" type="password"></label>
+        <button type="submit" id="submitCadastro">Cadastro</button>
+    </main>
 
     <script type="module" src="./controllers/cadastro.js"></script>
 </body>
