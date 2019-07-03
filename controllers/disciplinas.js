@@ -7,7 +7,6 @@ let $canvas = document.getElementById('disciplinas');
 renderDisciplinas();
 let $substring = document.getElementById("substring");
 $substring.addEventListener("input", () => {
-    console.log("changed");
     if (document.getElementById("substring").value.length >= 3) {
         $canvas.innerText = "";
         renderDisciplinas(substring.value);

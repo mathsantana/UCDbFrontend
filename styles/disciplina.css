@@ -1,3 +1,8 @@
+*{
+    text-decoration: none;
+    color: #000;
+}
+
 a div {
     display: block;
 }
@@ -21,3 +26,4 @@ span {
 .box:hover {
     background-color: rgb(243, 243, 243);
 }
+

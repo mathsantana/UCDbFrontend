@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=[device-width], initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./styles/home.css">
     <title>Disciplinas</title>
 </head>
 <body>
     <nav-bar login></nav-bar>
-    <input type="search" id="searchId" placeholder="Pesquisar por ID..."/>
-    <button type="submit" id="bttnSearch">Pesquisar</button>
-    <main id="perfilDisciplinas"></main>
+    <main>
+        <input type="search" id="searchId" placeholder="Pesquisar por ID..."/>
+        <button type="submit" id="bttnSearch">Pesquisar</button>
+        <div id="perfilDisciplinas"></div>
+    </main>
     <script type="module" src="/controllers/home.js"></script>
 </body>
 </html>
