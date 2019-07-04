@@ -1,4 +1,4 @@
-import {getAllPerfilDisciplina, getPerfilDisciplina} from "../model/modelPerfilDisciplinas.js";
+import {getAllPerfilDisciplina} from "../model/modelPerfilDisciplinas.js";
 import "../components/navbar.js"
 import "../components/disciplinas.js"
 
@@ -20,19 +20,24 @@ renderPerfilDisciplinas()
     });
 });
 
+$('input[type=radio][name=rank]').change(function() {
+
+    renderPerfilDisciplinas(this.value);
+});
 
 
 
-async function renderPerfilDisciplinas() {
+async function renderPerfilDisciplinas(value = "id") {
     let $disciplinas = document.getElementById("perfilDisciplinas");
-    let listPerfilDisciplinas = await getAllPerfilDisciplina(sessionStorage.getItem("token"));
+    $disciplinas.innerHTML = "";
+    let listPerfilDisciplinas = await getAllPerfilDisciplina(value);
+    console.log(listPerfilDisciplinas);
     for (const perfil of listPerfilDisciplinas) {
         listId.push(perfil.id);
         let $d = document.createElement("disciplina-ps");
         $d.setAttribute("login", "");
         $d.setAttribute("name", perfil.disciplina.nome);
         $d.setAttribute("id", perfil.id);
-        $d.setAttribute("likes", perfil.likes);
         $disciplinas.appendChild($d);
     }
 

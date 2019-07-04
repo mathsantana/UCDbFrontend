@@ -14,8 +14,21 @@ main {
     margin: auto;
 }
 
-input {
+#searchId {
     margin: 30px;
     width: 40%;
     height: 25px;
+}
+
+button {
+    margin: 5px 5px;
+    background-color: #1E2628;
+    color: white;
+    width: 15%;
+    height: 25px;
+    border-width: 0px;
+}
+
+input {
+    margin: 10px 5px 20px 5px;
 }

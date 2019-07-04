@@ -1,6 +1,10 @@
-async function getAllPerfilDisciplina() {
+async function getAllPerfilDisciplina(value) {
+    let url;
+    if (value == "like") url = "http://ucdb-final.herokuapp.com/api/v1/perfil/likes/";
+    else if (value == "comment") url = "http://ucdb-final.herokuapp.com/api/v1/perfil/comments/";
+    else url = "http://ucdb-final.herokuapp.com/api/v1/perfil/";
     try {
-        let r = await fetch("http://ucdb-final.herokuapp.com/api/v1/perfil/likes/", 
+        let r = await fetch(url, 
         {
             method: 'GET',
             headers:  {
