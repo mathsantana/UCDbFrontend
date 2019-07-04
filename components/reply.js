@@ -20,11 +20,17 @@ class Reply extends HTMLElement{
 
     render() {
         this.$shadow.innerHTML = 
-            `<link rel="stylesheet" href="">
+            `<link rel="stylesheet" href="./styles/reply.css">
+            <div id="reply">
+            <section id="info"> 
             <p class="user">${this.user}</p>
-             <p class="text">${this.text}</p>
-             <p class="date">${this.date}</p>
-             <button id="remove">Remover</button>`;
+            <p class="text">${this.text}</p>
+            </section>
+            <section id="options">
+            <p class="date">${this.date}</p>
+            <button id="remove">Remover</button>
+            </section>
+            </div>`;
         let $remove = this.$shadow.getElementById("remove");
         $remove.addEventListener("click", () => {
             console.log("flag");

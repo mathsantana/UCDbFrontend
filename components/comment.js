@@ -54,13 +54,14 @@ class Comment extends HTMLElement{
     render() {
         this.$shadow.innerHTML = 
             `<link rel="stylesheet" href="./styles/comment.css">
-            <div>
+            <div id="comment">
             <section id="info"> 
             <p class="user">${this.user}</p>
             <p class="text">${this.text}</p>
-            <p class="date">${this.date}</p>
+            
             </section>
             <section id="options">
+            <p class="date">${this.date}</p>
             <button id="reply">Responder</button>
             <button id="remove">Remover</button>
             </section>
@@ -87,7 +88,7 @@ class Comment extends HTMLElement{
         if (this.reply) {
             let $div = document.createElement("div");
             $div.setAttribute('id', 'replyField');
-            let $input = document.createElement("input");
+            let $input = document.createElement("textarea");
             $input.setAttribute('id', 'replyText');
             let $submit = document.createElement('button');
             $submit.setAttribute('id', 'replySubmit');

@@ -44,6 +44,7 @@ textarea {
     width: 490px;
     height: 50px;
     resize: none;
+    margin-left: 20px;
 }
 
 h2 {
@@ -64,4 +65,9 @@ div {
     flex-direction: row;
     align-items: center;
     height: 60px;
+    margin-bottom: 15px;
+}
+
+ul{
+    display: block;
 }
