@@ -3,6 +3,9 @@
 
 > Esse projeto tem como finalidade simular uma rede social de disciplinas onde cada disciplina tem um perfil associado, possuindo opções de likes e comentarios.
 
+> Link da aplicação: http://ucdbfront.herokuapp.com/
+
+> Vídeo mostrando a aplicação: https://youtu.be/cSatjtQrYfg
 
 ## O projeto utilizou das seguintes ferramentas:
 
@@ -42,4 +45,3 @@
 
 - `styles/` Diretório que contém toda a estilização em CSS das páginas HTML da aplicação.
 
-> Vídeo mostrando a aplicação: https://youtu.be/cSatjtQrYfg
