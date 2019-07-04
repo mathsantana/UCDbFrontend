@@ -23,8 +23,6 @@ async function renderDisciplinas(substring = false) {
     else data = await getDisciplinas();
     let disciplina;
 
-    console.log(data);
-
     for (disciplina of data) {
         let $d = document.createElement("disciplina-ps");
         $d.setAttribute("name", disciplina.nome);

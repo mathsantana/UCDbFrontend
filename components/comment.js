@@ -93,7 +93,6 @@ class Comment extends HTMLElement{
             let $submit = document.createElement('button');
             $submit.setAttribute('id', 'replySubmit');
             $submit.innerText = "Responder";
-            //$submit.setAttribute('onclick', 'bttnSubmit');
             $div.appendChild($input);
             $div.appendChild($submit);
             this.$shadow.appendChild($div);

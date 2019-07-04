@@ -6,7 +6,6 @@ let listId = [];
 renderPerfilDisciplinas()
 .then(() => {
     document.getElementById("bttnSearch").addEventListener("click", () => {
-        console.log(listId);
         let id = document.getElementById("searchId").value;
         if (id.length > 0) {
             if (listId.includes(Number(id))) {
@@ -31,7 +30,6 @@ async function renderPerfilDisciplinas(value = "id") {
     let $disciplinas = document.getElementById("perfilDisciplinas");
     $disciplinas.innerHTML = "";
     let listPerfilDisciplinas = await getAllPerfilDisciplina(value);
-    console.log(listPerfilDisciplinas);
     for (const perfil of listPerfilDisciplinas) {
         listId.push(perfil.id);
         let $d = document.createElement("disciplina-ps");

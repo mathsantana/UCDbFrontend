@@ -11,8 +11,6 @@ $buttonCadastrar.addEventListener("click", function () {
         "lastName": document.getElementById("lName").value
     };
 
-    console.log("Apertou!");
-
     cadastrarUsuario(newUser);
 
 });

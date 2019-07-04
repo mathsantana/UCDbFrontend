@@ -16,7 +16,6 @@ $bttnLike.addEventListener("click", () => { sendLike();});
 $bttnComment.addEventListener("click", () => { sendComment();});
 
 async function renderPage() {
-    console.log(id);
     if (id) {
         let perfilDisciplina = await getPerfilDisciplina(id, sessionStorage.getItem("email"),
         sessionStorage.getItem("token"));
@@ -40,7 +39,6 @@ async function renderPage() {
 }
 
 async function sendLike() {
-    console.log("apertou");
     let newLike = await giveLike(id, sessionStorage.getItem("email"), sessionStorage.getItem("token"));
     renderLike(newLike);
 }
@@ -106,7 +104,6 @@ function createComment(comment) {
 }
 
 function createReply(reply) {
-    console.log(reply);
     let $r = document.createElement("reply-ps");
     $r.setAttribute('user', `${reply.user.firstName} ${reply.user.lastName}`);
     $r.setAttribute('text', reply.text);

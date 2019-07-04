@@ -33,9 +33,6 @@ class Reply extends HTMLElement{
             </div>`;
         let $remove = this.$shadow.getElementById("remove");
         $remove.addEventListener("click", () => {
-            console.log("flag");
-            console.log(this.user);
-            console.log(this.email);
 
             if (sessionStorage.getItem("email") == this.email) {
                 removeReply(this.idComment, this.idReply, this.idPerfil, this.email)
