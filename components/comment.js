@@ -39,9 +39,6 @@ class Comment extends HTMLElement{
             this.toggleReply();
             let $bttnReply = this.$shadow.getElementById("replySubmit");
             let $input = this.$shadow.getElementById("replyText");
-            console.log(this.idComment || "id null");
-            console.log(sessionStorage.getItem("email") || "Email null");
-            console.log($input.value || "input null")
             $bttnReply.addEventListener('click', () => {
                 giveReply(this.idComment, sessionStorage.getItem("email"),
                 $input.value, sessionStorage.getItem("token"))
@@ -56,12 +53,18 @@ class Comment extends HTMLElement{
 
     render() {
         this.$shadow.innerHTML = 
-            `<link rel="stylesheet" href="">
+            `<link rel="stylesheet" href="./styles/comment.css">
+            <div>
+            <section id="info"> 
             <p class="user">${this.user}</p>
             <p class="text">${this.text}</p>
             <p class="date">${this.date}</p>
+            </section>
+            <section id="options">
             <button id="reply">Responder</button>
-            <button id="remove">Remover</button>`;
+            <button id="remove">Remover</button>
+            </section>
+            </div>`;
         let $reply = this.$shadow.getElementById("reply");
         let $remove = this.$shadow.getElementById("remove");
         $reply.addEventListener("click", () => {

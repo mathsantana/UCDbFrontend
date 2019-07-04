@@ -170,6 +170,8 @@ async function removeReply(idComment, idReply, idPerfil, email) {
             mode: "cors"
         });
 
+        console.log(r);
+
         if (!r.ok) {
             throw r;
         }

@@ -27,8 +27,6 @@ async function renderPage() {
         
         $nLikes.innerText = `${perfilDisciplina.likes}`;
 
-        console.log(perfilDisciplina.usuarioCurtiu);
-
         renderLike(perfilDisciplina);
 
         renderComments(true, perfilDisciplina)
@@ -110,11 +108,11 @@ function createComment(comment) {
 function createReply(reply) {
     console.log(reply);
     let $r = document.createElement("reply-ps");
-    $r.setAttribute('user', reply.user);
+    $r.setAttribute('user', `${reply.user.firstName} ${reply.user.lastName}`);
     $r.setAttribute('text', reply.text);
     $r.setAttribute('date', reply.date);
     $r.setAttribute('idPerfil', id);
-    $r.setAttribute('email', reply.user);
+    $r.setAttribute('email', reply.user.email);
     $r.setAttribute('idComment', reply.parent);
     $r.setAttribute('idReply', reply.comments_id);
     return $r;

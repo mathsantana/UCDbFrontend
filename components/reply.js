@@ -27,6 +27,10 @@ class Reply extends HTMLElement{
              <button id="remove">Remover</button>`;
         let $remove = this.$shadow.getElementById("remove");
         $remove.addEventListener("click", () => {
+            console.log("flag");
+            console.log(this.user);
+            console.log(this.email);
+
             if (sessionStorage.getItem("email") == this.email) {
                 removeReply(this.idComment, this.idReply, this.idPerfil, this.email)
                 .then(() => { renderComments(); });
@@ -37,8 +41,6 @@ class Reply extends HTMLElement{
 
     }
 }
-
-//  button.link { background:none;border:none; } css button
 
 
 window.customElements.define('reply-ps', Reply)
