@@ -5,8 +5,6 @@
 
 > Link da aplicação: http://ucdbfront.herokuapp.com/
 
-> Vídeo mostrando a aplicação: https://youtu.be/cSatjtQrYfg
-
 ## O projeto utilizou das seguintes ferramentas:
 
 - jQuery
