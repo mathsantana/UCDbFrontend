@@ -43,3 +43,8 @@
 
 - `styles/` Diretório que contém toda a estilização em CSS das páginas HTML da aplicação.
 
+## Desenvolvedores
+
+- [Matheus Santana](https://github.com/mathsantana)
+- [Yuri Souza](https://github.com/yuri-s-s)
+
