@@ -1,21 +1,17 @@
-# UCDbFrontend
+# [UCDbFrontend](http://ucdbfront.herokuapp.com/)
 > Repositório referente ao frontend do projeto final da disciplina de Projeto de Software na UFCG.
 
-> Esse projeto tem como finalidade simular uma rede social de disciplinas onde cada disciplina tem um perfil associado, possuindo opções de likes e comentarios.
-
-> Link da aplicação: http://ucdbfront.herokuapp.com/
+Esse projeto tem como finalidade simular uma rede social de disciplinas onde cada disciplina tem um perfil associado, possuindo opções de likes e comentarios.
 
 ## O projeto utilizou das seguintes ferramentas:
-
-- jQuery
-- Vanilla JS
-- HTML 5
-- CSS
-- Heroku (Deploy)
-- Padrão Híbrido (MVC + CBA)
+    - jQuery
+    - Vanilla JS
+    - HTML 5
+    - CSS
+    - Heroku (Deploy)
+    - Padrão Híbrido (MVC + CBA)
 
 ## Diretórios usados:
-
 - No caminho atual (`.`), temos todas as páginas html de nossa aplicação, referentes a view:
     - `index.html` Página inicial da aplicação, que mostra as disciplinas do curso.
     - `cadastro.html` Página onde um novo usuário pode se cadastrar.
@@ -43,8 +39,10 @@
 
 - `styles/` Diretório que contém toda a estilização em CSS das páginas HTML da aplicação.
 
-## Desenvolvedores
+# Backend:
+- [Repositório da aplicação do Backend](https://github.com/yuri-s-s/UCDbBackend-pSoft)
 
+## Desenvolvedores
 - [Matheus Santana](https://github.com/mathsantana)
 - [Yuri Souza](https://github.com/yuri-s-s)
 
