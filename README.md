@@ -1,4 +1,4 @@
-# [UCDbFrontend](http://ucdbfront.herokuapp.com/)
+DbFrontend](http://ucdbfront.herokuapp.com/)
 > Repositório referente ao frontend do projeto final da disciplina de Projeto de Software na UFCG.
 
 Esse projeto tem como finalidade simular uma rede social de disciplinas onde cada disciplina tem um perfil associado, possuindo opções de likes e comentarios.
